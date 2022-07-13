@@ -1,6 +1,8 @@
 import * as utils from '../utils'
 export default {
   props: {
+    title: {},
+    desc: {},
     value: {},
     label: {
       type: String

@@ -91,5 +91,5 @@ export default {
       margin-top 5px
       align-items flex-start
       .q-radio__inner
-        margin -5px 0
+        margin -8px 0
 </style>

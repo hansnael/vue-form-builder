@@ -20,6 +20,8 @@
         <!-- form rendering -->
         <div class="q-pa-md q-form-container">
           <h4>Form Rendering</h4>
+          <h4 class="q-my-md">{{ fields.title }}</h4>
+          <p class="q-mb-xl">{{ fields.desc }}</p>
           <div v-for="(field, index) in fields" :key="index">
             <component v-model="fieldData[field.cid]" @input="onInput" v-bind:is="getElement(field)" :label="field.label" :required="field.required" :field_options="field.field_options" :id="field.cid" :cid="field.cid" :ref="field.cid" debounce="500" />
           </div>
@@ -68,6 +70,7 @@ export default {
      */
     onInput (val, id) {
       // console.debug(`${id}: ` + JSON.stringify(val))
+      console.log(`${id}: ` + JSON.stringify(val))
     },
     /**
      * Determine the name of the Element object based on the 'field_type' of the field data object
@@ -84,6 +87,7 @@ export default {
     fields: {
       handler (val) {
         // console.debug(val)
+        console.log(val)
       },
       deep: true
     }

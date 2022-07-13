@@ -21,7 +21,8 @@
 
     <q-page-container>
       <q-page class="q-form-builder-page">
-
+        <q-input v-model="fields.title" type="text" label="Form Title" />
+        <q-input v-model="fields.desc" type="textarea" label="Form Description" />
         <draggable v-model="fields" @change="onChange" :options="destinationOptions" :class="{ 'q-form-builder-elements-container': true, 'empty': fields.length == 0 }">
           <div class="editable-element-container" v-for="(field, idx) in fields" :key="idx">
             <editable-element v-model="fields[idx]" @click="selectForEdit" :class="{'selected': isSelectedForEdit(idx)}" :ref="fields[idx].cid" />
@@ -39,6 +40,7 @@
 
 <script>
 import {
+  QInput,
   QLayout,
   QPageContainer,
   QPage,
@@ -60,7 +62,7 @@ import * as utils from './utils'
 
 export default {
   name: 'QFormBuilder',
-  components: { EditableElement, EditableElementOptions, draggable, QLayout, QPageContainer, QPage, QDrawer, QTab, QTabs, QTabPanel, QTabPanels, QTooltip, QBtn },
+  components: { EditableElement, EditableElementOptions, draggable, QLayout, QPageContainer, QPage, QDrawer, QTab, QTabs, QTabPanel, QTabPanels, QTooltip, QBtn, QInput },
   data () {
     return {
       fields: this.value,
@@ -211,7 +213,7 @@ export default {
     min-height 200px
 
   .q-form-builder-elements-container.empty
-    background-image url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='200px' width='500px'><text x='0' y='15' fill='lightgray' font-size='14' font-family='Roboto, Helvetica, sans-serif'>Drag an element here to get started.</text></svg>")
+    background-image url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='200px' width='500px'><text x='0' y='15' fill='lightgray' font-size='14' font-family='Roboto, Helvetica, sans-serif'>Click an element or drag it here to get started.</text></svg>")
     background-repeat no-repeat
     background-position 0 40px
 
